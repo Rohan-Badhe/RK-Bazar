@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery - DMart Clone</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="grocery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <h1>SPICE BAZAAR</h1>
+                <span>Essentials</span>
+            </a>
+        </div>
+        
+        <div class="search-bar">
+            <input type="text" placeholder="Search for products...">
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+
+        <div class="header-icons">
+            <div class="user">
+                <i class="fa-regular fa-user"></i>
+                <span>Login</span>
+            </div>
+            <div class="cart" onclick="window.location.href='cart.html'">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cart-count">0</span>
+                <span>Cart</span>
+            </div>
+        </div>
+    </header>
+
+   <!-- Categories Nav -->
+    <nav class="categories">
+        <a href="Grocery.html">Grocery</a>
+        <a href="staples.html">Staples</a>
+        <a href="beverages.html">Beverages</a>
+        <a href="personal-care.html">Personal Care</a>
+        <a href="household.html">Household</a>
+        <a href="baby-kids.html">Baby & Kids</a>
+        
+    </nav>
+
+    <!-- Main Content -->
+    <div class="grocery-container">
+        <!-- Sidebar / Filters -->
+        <aside class="sidebar">
+            <div class="filter-section">
+                <h3><i class="fa-solid fa-filter"></i> Filters</h3>
+                
+                <div class="filter-group">
+                    <h4>Category</h4>
+                    <label class="checkbox-label">
+                        <input type="checkbox" class="category-filter" value="all" checked> All
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" class="category-filter" value="rice"> Rice & Rice Products
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" class="category-filter" value="dal"> Dal & Pulses
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" class="category-filter" value="oil"> Edible Oils
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" class="category-filter" value="atta"> Atta & Flours
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" class="category-filter" value="spices"> Spices
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" class="category-filter" value="salt"> Salt & Sugar
+                    </label>
+                </div>
+
+                <div class="filter-group">
+                    <h4>Brand</h4>
+                    <label class="checkbox-label">
+                        <input type="checkbox"> India Gate
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox"> Tata
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox"> Aashirvaad
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox"> Saffola
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox"> MDH
+                    </label>
+                </div>
+
+                <div class="filter-group">
+                    <h4>Price Range</h4>
+                     <div class="price-range-slider">
+                    <input type="range" min="0" max="1000" value="1000" id="priceRange" oninput="updatePriceLabel()">
+                    <div class="price-labels">
+                        <span>₹0</span>
+                        <span id="price-value">₹1000</span>
+                    </div>
+                </div>
+
+                <button class="apply-filters-btn" onclick="applyFilters()">Apply Filters</button>
+                <button class="clear-filters-btn" onclick="clearFilters()">Clear All</button>
+            </div>
+        </aside>
+
+        <!-- Product Section -->
+        <main class="grocery-main">
+            <!-- Banner -->
+            <div class="grocery-banner">
+                <div class="banner-text">
+                    <h2>Fresh Grocery Deals</h2>
+                    <p>Up to 20% off on selected items</p>
+                </div>
+            </div>
+
+            <!-- Sort Bar -->
+            <div class="sort-bar">
+                <span class="result-count"><span id="product-count">24</span> products found</span>
+                <div class="sort-options">
+                    <label>Sort by:</label>
+                    <select id="sort-select" onchange="sortProducts()">
+                        <option value="default">Default</option>
+                        <option value="low-high">Price: Low to High</option>
+                        <option value="high-low">Price: High to Low</option>
+                        <option value="name">Name: A-Z</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="grocery-products" id="grocery-products">
+                <!-- Products will be loaded via JavaScript -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn">Next <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 SPICE BAZAAR Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="grocery.js"></script>
+</body>
+</html>

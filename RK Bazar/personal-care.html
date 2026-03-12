@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Care - DMart Ready</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="personal-care.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <h1>SPICE BAZAAR</h1>
+                <span>Essentials</span>
+            </a>
+        </div>
+        
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search for personal care products...">
+            <button onclick="searchProducts()"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+
+        <div class="header-icons">
+            <div class="user">
+                <i class="fa-regular fa-user"></i>
+                <span>Login</span>
+            </div>
+            <div class="cart" onclick="window.location.href='cart.html'">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cart-count">0</span>
+                <span>Cart</span>
+            </div>
+        </div>
+    </header>
+
+     <!-- Categories Nav -->
+    <nav class="categories">
+        <a href="Grocery.html">Grocery</a>
+        <a href="staples.html">Staples</a>
+        <a href="beverages.html">Beverages</a>
+        <a href="personal-care.html">Personal Care</a>
+        <a href="household.html">Household</a>
+        <a href="baby-kids.html">Baby & Kids</a>
+   
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> &gt; <a href="personal-care.html">Personal Care</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Sidebar Filters -->
+        <aside class="sidebar">
+            <div class="filter-header">
+                <h3><i class="fa-solid fa-filter"></i> Filters</h3>
+                <button class="clear-filters" onclick="clearAllFilters()">Clear All</button>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="filter-group">
+                <h4>Category</h4>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox" class="category-checkbox" value="all" checked onchange="filterProducts()">
+                        <span>All Personal Care</span>
+                        <span class="count">(32)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="category-checkbox" value="soap" onchange="filterProducts()">
+                        <span>Soaps & Body Wash</span>
+                        <span class="count">(6)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="category-checkbox" value="shampoo" onchange="filterProducts()">
+                        <span>Shampoo & Conditioner</span>
+                        <span class="count">(6)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="category-checkbox" value="toothpaste" onchange="filterProducts()">
+                        <span>Toothpaste & Oral Care</span>
+                        <span class="count">(5)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="category-checkbox" value="skincare" onchange="filterProducts()">
+                        <span>Skin Care</span>
+                        <span class="count">(5)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="category-checkbox" value="deodorant" onchange="filterProducts()">
+                        <span>Deodorants & Fragrances</span>
+                        <span class="count">(4)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="category-checkbox" value="razor" onchange="filterProducts()">
+                        <span>Shaving & Grooming</span>
+                        <span class="count">(3)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="category-checkbox" value="haircare" onchange="filterProducts()">
+                        <span>Hair Care & Styling</span>
+                        <span class="count">(3)</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Brand Filter -->
+            <div class="filter-group">
+                <h4>Brand</h4>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox" class="brand-checkbox" value="Dove" onchange="filterProducts()">
+                        <span>Dove</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="brand-checkbox" value="Colgate" onchange="filterProducts()">
+                        <span>Colgate</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="brand-checkbox" value="Hindustan Unilever" onchange="filterProducts()">
+                        <span>Hindustan Unilever</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="brand-checkbox" value="Procter & Gamble" onchange="filterProducts()">
+                        <span>Procter & Gamble</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="brand-checkbox" value="L'Oreal" onchange="filterProducts()">
+                        <span>L'Oreal</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="brand-checkbox" value="Godrej" onchange="filterProducts()">
+                        <span>Godrej</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Price Range Filter -->
+            <div class="filter-group">
+                <h4>Price Range</h4>
+                <div class="price-range-slider">
+                    <input type="range" min="0" max="1000" value="1000" id="priceRange" oninput="updatePriceLabel()">
+                    <div class="price-labels">
+                        <span>₹0</span>
+                        <span id="price-value">₹1000</span>
+                    </div>
+                </div>
+                <button class="apply-price-btn" onclick="filterProducts()">Apply Price</button>
+            </div>
+
+            <!-- Discount Filter -->
+            <div class="filter-group">
+                <h4>Discount</h4>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="radio" name="discount" value="0" checked onchange="filterProducts()">
+                        <span>Any Discount</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="radio" name="discount" value="10" onchange="filterProducts()">
+                        <span>10% or more</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="radio" name="discount" value="20" onchange="filterProducts()">
+                        <span>20% or more</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="radio" name="discount" value="30" onchange="filterProducts()">
+                        <span>30% or more</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Hair Type Filter -->
+            <div class="filter-group">
+                <h4>Hair Type</h4>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox" class="hairtype-checkbox" value="normal" onchange="filterProducts()">
+                        <span>Normal</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="hairtype-checkbox" value="dry" onchange="filterProducts()">
+                        <span>Dry</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="hairtype-checkbox" value="oily" onchange="filterProducts()">
+                        <span>Oily</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="hairtype-checkbox" value="colored" onchange="filterProducts()">
+                        <span>Colored</span>
+                    </label>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Product Section -->
+        <main class="products-section">
+            <!-- Banner -->
+            <div class="personalcare-banner">
+                <div class="banner-content">
+                    <div class="banner-icon">
+                        <i class="fa-solid fa-spa"></i>
+                    </div>
+                    <div class="banner-text">
+                        <h2>Personal Care Essentials</h2>
+                        <p>Premium products for your daily grooming routine</p>
+                        <span class="banner-offer">Up to 30% OFF</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Categories -->
+            <div class="quick-categories">
+                <div class="quick-cat-card" onclick="quickFilter('soap')">
+                    <i class="fa-solid fa-soap"></i>
+                    <span>Soaps</span>
+                </div>
+                <div class="quick-cat-card" onclick="quickFilter('shampoo')">
+                    <i class="fa-solid fa-pump-soap"></i>
+                    <span>Shampoo</span>
+                </div>
+                <div class="quick-cat-card" onclick="quickFilter('toothpaste')">
+                    <i class="fa-solid fa-tooth"></i>
+                    <span>Toothpaste</span>
+                </div>
+                <div class="quick-cat-card" onclick="quickFilter('skincare')">
+                    <i class="fa-solid fa-hand-sparkles"></i>
+                    <span>Skin Care</span>
+                </div>
+                <div class="quick-cat-card" onclick="quickFilter('deodorant')">
+                    <i class="fa-solid fa-wind"></i>
+                    <span>Deodorants</span>
+                </div>
+            </div>
+
+            <!-- Sort and View Options -->
+            <div class="sort-bar">
+                <div class="results-info">
+                    <span id="product-count">32</span> products found
+                </div>
+                <div class="sort-options">
+                    <label>Sort by:</label>
+                    <select id="sort-select" onchange="sortProducts()">
+                        <option value="default">Relevance</option>
+                        <option value="low-high">Price: Low to High</option>
+                        <option value="high-low">Price: High to Low</option>
+                        <option value="discount">Discount: High to Low</option>
+                        <option value="name">Name: A to Z</option>
+                    </select>
+                </div>
+                <div class="view-options">
+                    <button class="view-btn active" onclick="setGridView()"><i class="fa-solid fa-grid-2"></i></button>
+                    <button class="view-btn" onclick="setListView()"><i class="fa-solid fa-list"></i></button>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid" id="products-grid">
+                <!-- Products will be rendered by JavaScript -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="page-btn" disabled><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>SPICE BAZAAR's Personal Care</h4>
+                <p>Quality grooming and personal care products for the whole family.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
+                <a href="#">FAQs</a>
+                <a href="#">Terms & Conditions</a>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p><i class="fa-solid fa-phone"></i> 1800-123-4567</p>
+                <p><i class="fa-solid fa-envelope"></i> support@spicebazaar.in</p>
+            </div>
+            <p class="copyright">&copy; 2026 SPICE BAZAAR Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="personal-care.js"></script>
+</body>
+</html>

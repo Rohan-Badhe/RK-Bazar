@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spice BAZAR - Your Online Supermarket</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <h1>SPICE BAZAAR</h1>
+            <span>Essentials</span>
+        </div>
+        
+        <div class="search-bar">
+            <input type="text" placeholder="Search for products...">
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+
+        <div class="header-icons">
+            <div class="user" onclick="window.location.href='login.html'">
+                <i class="fa-regular fa-user"></i>
+                <span>Login</span>
+            </div>
+             <div class="cart" onclick="window.location.href='cart.html'">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cart-count">0</span>
+                <span>Cart</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Categories Nav -->
+    <nav class="categories">
+        <a href="Grocery.html">Grocery</a>
+        <a href="staples.html">Staples</a>
+        <a href="beverages.html">Beverages</a>
+        <a href="personal-care.html">Personal Care</a>
+        <a href="household.html">Household</a>
+        <a href="baby-kids.html">Baby & Kids</a>
+        
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Bringing The World To Your Kitchen</h2>
+            <p>Fresh today, better tomorrow</p>
+        </div>
+    </section>
+
+    <!-- Product Section -->
+    <section class="products-section">
+        <h2>Best Sellers</h2>
+        <div class="product-grid" id="product-grid">
+            <!-- Products will be injected here by JS -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 SPICE BAZAAR Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

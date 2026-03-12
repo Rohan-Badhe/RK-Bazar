@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - DMart Ready</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <h1>SPICE BAZAAR</h1>
+                <span>Essentials</span>
+            </a>
+        </div>
+        
+        <div class="search-bar">
+            <input type="text" placeholder="Search for products...">
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+
+        <div class="header-icons">
+            <div class="user" onclick="window.location.href='login.html'">
+                <i class="fa-regular fa-user"></i>
+                <span>Login</span>
+            </div>
+            <div class="cart active">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cart-count">0</span>
+                <span>Cart</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Categories Nav -->
+    <nav class="categories">
+        <a href="Grocery.html">Grocery</a>
+        <a href="staples.html">Staples</a>
+        <a href="beverages.html">Beverages</a>
+        <a href="personal-care.html">Personal Care</a>
+        <a href="household.html">Household</a>
+        <a href="baby-kids.html">Baby & Kids</a>
+        
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> &gt; <span>Shopping Cart</span>
+    </div>
+
+    <!-- Cart Section -->
+    <section class="cart-section">
+        <div class="cart-container">
+            <h1>Shopping Cart (<span id="cart-item-count">0</span> items)</h1>
+            
+            <div class="cart-content">
+                <!-- Cart Items Column -->
+                <div class="cart-items-column">
+                    <div id="cart-items-container">
+                        <!-- Cart items will be loaded via JavaScript -->
+                        <div class="empty-cart-message" id="empty-cart">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <h2>Your cart is empty</h2>
+                            <p>Looks like you haven't added anything to your cart yet.</p>
+                            <a href="grocery.html" class="continue-shopping-btn">Start Shopping</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Price Summary Column -->
+                <div class="price-summary-column" id="price-summary">
+                    <div class="summary-card">
+                        <h3>Price Summary</h3>
+                        
+                        <div class="summary-details">
+                            <div class="summary-row">
+                                <span>Subtotal (<span id="summary-item-count">0</span> items)</span>
+                                <span id="subtotal-price">₹0</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Delivery Charges</span>
+                                <span class="delivery-charge" id="delivery-charge">FREE</span>
+                            </div>
+                            <div class="coupon-row">
+                                <input type="text" placeholder="Enter Coupon Code" id="coupon-input">
+                                <button onclick="applyCoupon()">Apply</button>
+                            </div>
+                            <div class="summary-row discount-row" id="discount-row" style="display: none;">
+                                <span>Discount</span>
+                                <span class="discount-amount" id="discount-amount">-₹0</span>
+                            </div>
+                        </div>
+                        
+                        <div class="summary-total">
+                            <span>Total</span>
+                            <span id="total-price">₹0</span>
+                        </div>
+                        
+                        <button class="checkout-btn" id="checkout-btn" onclick="proceedToCheckout()">
+                            PROCEED TO CHECKOUT
+                        </button>
+                        
+                        <a href="grocery.html" class="continue-shopping-link">
+                            <i class="fa-solid fa-arrow-left"></i> Continue Shopping
+                        </a>
+                    </div>
+
+                    <!-- Safe Payment Info -->
+                    <div class="safe-payment">
+                        <i class="fa-solid fa-lock"></i>
+                        <span>Safe and Secure Payments. 100% Authentic Products.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+            </div>
+            <p>&copy; 2026 SPICE BAZAAR Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beverages - DMart Ready</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="beverages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <h1>SPICE BAZAAR</h1>
+                <span>ESSENTIAL</span>
+            </a>
+        </div>
+        
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search for beverages...">
+            <button onclick="searchProducts()"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+
+        <div class="header-icons">
+            <div class="user">
+                <i class="fa-regular fa-user"></i>
+                <span>Login</span>
+            </div>
+            <div class="cart" onclick="window.location.href='cart.html'">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cart-count">0</span>
+                <span>Cart</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Categories Nav -->
+    <nav class="categories">
+        <a href="Grocery.html">Grocery</a>
+        <a href="staples.html">Staples</a>
+        <a href="beverages.html">Beverages</a>
+        <a href="personal-care.html">Personal Care</a>
+        <a href="household.html">Household</a>
+        <a href="baby-kids.html">Baby & Kids</a>
+       
+    </nav>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> &gt; <a href="beverages.html">Beverages</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Sidebar Filters -->
+        <aside class="sidebar">
+            <div class="filter-header">
+                <h3><i class="fa-solid fa-filter"></i> Filters</h3>
+                <button class="clear-filters" onclick="clearAllFilters()">Clear All</button>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="filter-group">
+                <h4>Category</h4>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox" class="category-checkbox" value="all" checked onchange="filterProducts()">
+                        <span>All Beverages</span>
+                        <span class="count">(30)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="category-checkbox" value="juice" onchange="filterProducts()">
+                        <span>Juices & Drinks</span>
+                        <span class="count">(8)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="category-checkbox" value="tea" onchange="filterProducts()">
+                        <span>Tea</span>
+                        <span class="count">(6)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="category-checkbox" value="coffee" onchange="filterProducts()">
+                        <span>Coffee</span>
+                        <span class="count">(5)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="category-checkbox" value="softdrink" onchange="filterProducts()">
+                        <span>Soft Drinks</span>
+                        <span class="count">(6)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="category-checkbox" value="energy" onchange="filterProducts()">
+                        <span>Energy Drinks</span>
+                        <span class="count">(3)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="category-checkbox" value="water" onchange="filterProducts()">
+                        <span>Water & Sparkling</span>
+                        <span class="count">(2)</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Brand Filter -->
+            <div class="filter-group">
+                <h4>Brand</h4>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox" class="brand-checkbox" value="Tropicana" onchange="filterProducts()">
+                        <span>Tropicana</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="brand-checkbox" value="Coca Cola" onchange="filterProducts()">
+                        <span>Coca Cola</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="brand-checkbox" value="Pepsi" onchange="filterProducts()">
+                        <span>Pepsi</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="brand-checkbox" value="Red Bull" onchange="filterProducts()">
+                        <span>Red Bull</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="brand-checkbox" value="Lipton" onchange="filterProducts()">
+                        <span>Lipton</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="brand-checkbox" value="Nescafe" onchange="filterProducts()">
+                        <span>Nescafe</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Price Range Filter -->
+            <div class="filter-group">
+                <h4>Price Range</h4>
+                <div class="price-range-slider">
+                    <input type="range" min="0" max="500" value="500" id="priceRange" oninput="updatePriceLabel()">
+                    <div class="price-labels">
+                        <span>₹0</span>
+                        <span id="price-value">₹500</span>
+                    </div>
+                </div>
+                <button class="apply-price-btn" onclick="filterProducts()">Apply Price</button>
+            </div>
+
+            <!-- Discount Filter -->
+            <div class="filter-group">
+                <h4>Discount</h4>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="radio" name="discount" value="0" checked onchange="filterProducts()">
+                        <span>Any Discount</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="radio" name="discount" value="10" onchange="filterProducts()">
+                        <span>10% or more</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="radio" name="discount" value="20" onchange="filterProducts()">
+                        <span>20% or more</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Flavor Filter -->
+            <div class="filter-group">
+                <h4>Flavor</h4>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox" class="flavor-checkbox" value="mango" onchange="filterProducts()">
+                        <span>Mango</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="flavor-checkbox" value="orange" onchange="filterProducts()">
+                        <span>Orange</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="flavor-checkbox" value="mixed" onchange="filterProducts()">
+                        <span>Mixed Fruit</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="flavor-checkbox" value="cola" onchange="filterProducts()">
+                        <span>Cola</span>
+                    </label>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Product Section -->
+        <main class="products-section">
+            <!-- Banner -->
+            <div class="beverages-banner">
+                <div class="banner-content">
+                    <div class="banner-icon">
+                        <i class="fa-solid fa-bottle-water"></i>
+                    </div>
+                    <div class="banner-text">
+                        <h2>Refreshing Beverages</h2>
+                        <p>Stay hydrated with our refreshing range of drinks</p>
+                        <span class="banner-offer">Up to 25% OFF</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Categories -->
+            <div class="quick-categories">
+                <div class="quick-cat-card" onclick="quickFilter('juice')">
+                    <i class="fa-solid fa-glass-water"></i>
+                    <span>Juices</span>
+                </div>
+                <div class="quick-cat-card" onclick="quickFilter('tea')">
+                    <i class="fa-solid fa-mug-hot"></i>
+                    <span>Tea</span>
+                </div>
+                <div class="quick-cat-card" onclick="quickFilter('coffee')">
+                    <i class="fa-solid fa-coffee"></i>
+                    <span>Coffee</span>
+                </div>
+                <div class="quick-cat-card" onclick="quickFilter('softdrink')">
+                    <i class="fa-solid fa-can-food"></i>
+                    <span>Soft Drinks</span>
+                </div>
+                <div class="quick-cat-card" onclick="quickFilter('energy')">
+                    <i class="fa-solid fa-bolt"></i>
+                    <span>Energy</span>
+                </div>
+            </div>
+
+            <!-- Sort and View Options -->
+            <div class="sort-bar">
+                <div class="results-info">
+                    <span id="product-count">30</span> products found
+                </div>
+                <div class="sort-options">
+                    <label>Sort by:</label>
+                    <select id="sort-select" onchange="sortProducts()">
+                        <option value="default">Relevance</option>
+                        <option value="low-high">Price: Low to High</option>
+                        <option value="high-low">Price: High to Low</option>
+                        <option value="discount">Discount: High to Low</option>
+                        <option value="name">Name: A to Z</option>
+                    </select>
+                </div>
+                <div class="view-options">
+                    <button class="view-btn active" onclick="setGridView()"><i class="fa-solid fa-grid-2"></i></button>
+                    <button class="view-btn" onclick="setListView()"><i class="fa-solid fa-list"></i></button>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid" id="products-grid">
+                <!-- Products will be rendered by JavaScript -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="page-btn" disabled><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>SPICE BAZAAR</h4>
+                <p>Refreshing drinks, juices, and beverages for every occasion.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
+                <a href="#">FAQs</a>
+                <a href="#">Terms & Conditions</a>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p><i class="fa-solid fa-phone"></i> 1800-123-4567</p>
+                <p><i class="fa-solid fa-envelope"></i> support@spicebazaar.in</p>
+            </div>
+            <p class="copyright">&copy; 2026 SPICE BAZAAR Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="beverages.js"></script>
+</body>
+</html>

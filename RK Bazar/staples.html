@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staples - DMart Ready</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="staples.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <h1>SPICE BAZAAR</h1>
+                <span>Essentials</span>
+            </a>
+        </div>
+        
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search for staples...">
+            <button onclick="searchProducts()"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+
+        <div class="header-icons">
+            <div class="user">
+                <i class="fa-regular fa-user"></i>
+                <span>Login</span>
+            </div>
+            <div class="cart" onclick="window.location.href='cart.html'">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cart-count">0</span>
+                <span>Cart</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Categories Nav -->
+    <nav class="categories">
+        <a href="Grocery.html">Grocery</a>
+        <a href="staples.html">Staples</a>
+        <a href="beverages.html">Beverages</a>
+        <a href="personal-care.html">Personal Care</a>
+        <a href="household.html">Household</a>
+        <a href="baby-kids.html">Baby & Kids</a>
+      
+    </nav>
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> &gt; <a href="staples.html">Staples</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Sidebar Filters -->
+        <aside class="sidebar">
+            <div class="filter-header">
+                <h3><i class="fa-solid fa-filter"></i> Filters</h3>
+                <button class="clear-filters" onclick="clearAllFilters()">Clear All</button>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="filter-group">
+                <h4>Category</h4>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox" class="category-checkbox" value="all" checked onchange="filterProducts()">
+                        <span>All Staples</span>
+                        <span class="count">(28)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="category-checkbox" value="rice" onchange="filterProducts()">
+                        <span>Rice</span>
+                        <span class="count">(6)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="category-checkbox" value="wheat" onchange="filterProducts()">
+                        <span>Wheat Flour (Atta)</span>
+                        <span class="count">(4)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="category-checkbox" value="dal" onchange="filterProducts()">
+                        <span>Dals & Pulses</span>
+                        <span class="count">(8)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="category-checkbox" value="spices" onchange="filterProducts()">
+                        <span>Spices</span>
+                        <span class="count">(6)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="category-checkbox" value="masala" onchange="filterProducts()">
+                        <span>Masalas</span>
+                        <span class="count">(4)</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Brand Filter -->
+            <div class="filter-group">
+                <h4>Brand</h4>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox" class="brand-checkbox" value="India Gate" onchange="filterProducts()">
+                        <span>India Gate</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="brand-checkbox" value="Aashirvaad" onchange="filterProducts()">
+                        <span>Aashirvaad</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="brand-checkbox" value="Tata" onchange="filterProducts()">
+                        <span>Tata</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="brand-checkbox" value="MDH" onchange="filterProducts()">
+                        <span>MDH</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="brand-checkbox" value="Everest" onchange="filterProducts()">
+                        <span>Everest</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="brand-checkbox" value="Lakshmi" onchange="filterProducts()">
+                        <span>Lakshmi</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Price Range Filter -->
+            <div class="filter-group">
+                <h4>Price Range</h4>
+                <div class="price-range-slider">
+                    <input type="range" min="0" max="1000" value="1000" id="priceRange" oninput="updatePriceLabel()">
+                    <div class="price-labels">
+                        <span>₹0</span>
+                        <span id="price-value">₹1000</span>
+                    </div>
+                </div>
+                <button class="apply-price-btn" onclick="filterProducts()">Apply Price</button>
+            </div>
+
+            <!-- Discount Filter -->
+            <div class="filter-group">
+                <h4>Discount</h4>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="radio" name="discount" value="0" checked onchange="filterProducts()">
+                        <span>Any Discount</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="radio" name="discount" value="10" onchange="filterProducts()">
+                        <span>10% or more</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="radio" name="discount" value="20" onchange="filterProducts()">
+                        <span>20% or more</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="radio" name="discount" value="30" onchange="filterProducts()">
+                        <span>30% or more</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Pack Size Filter -->
+            <div class="filter-group">
+                <h4>Pack Size</h4>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox" class="pack-checkbox" value="small" onchange="filterProducts()">
+                        <span>Up to 500g</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="pack-checkbox" value="medium" onchange="filterProducts()">
+                        <span>500g - 1kg</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="pack-checkbox" value="large" onchange="filterProducts()">
+                        <span>1kg - 5kg</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="pack-checkbox" value="xl" onchange="filterProducts()">
+                        <span>5kg & Above</span>
+                    </label>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Product Section -->
+        <main class="products-section">
+            <!-- Banner -->
+            <div class="staples-banner">
+                <div class="banner-content">
+                    <div class="banner-icon">
+                        <i class="fa-solid fa-wheat-awn"></i>
+                    </div>
+                    <div class="banner-text">
+                        <h2>Premium Staples</h2>
+                        <p>Essential ingredients for your kitchen</p>
+                        <span class="banner-offer">Up to 20% OFF on Bulk Orders</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Categories -->
+            <div class="quick-categories">
+                <div class="quick-cat-card" onclick="quickFilter('rice')">
+                    <i class="fa-solid fa-bowl-rice"></i>
+                    <span>Rice</span>
+                </div>
+                <div class="quick-cat-card" onclick="quickFilter('wheat')">
+                    <i class="fa-solid fa-wheat-awn"></i>
+                    <span>Atta</span>
+                </div>
+                <div class="quick-cat-card" onclick="quickFilter('dal')">
+                    <i class="fa-solid fa-peas"></i>
+                    <span>Dals</span>
+                </div>
+                <div class="quick-cat-card" onclick="quickFilter('spices')">
+                    <i class="fa-solid fa-mortar-pestle"></i>
+                    <span>Spices</span>
+                </div>
+                <div class="quick-cat-card" onclick="quickFilter('masala')">
+                    <i class="fa-solid fa-jar"></i>
+                    <span>Masalas</span>
+                </div>
+            </div>
+
+            <!-- Sort and View Options -->
+            <div class="sort-bar">
+                <div class="results-info">
+                    <span id="product-count">28</span> products found
+                </div>
+                <div class="sort-options">
+                    <label>Sort by:</label>
+                    <select id="sort-select" onchange="sortProducts()">
+                        <option value="default">Relevance</option>
+                        <option value="low-high">Price: Low to High</option>
+                        <option value="high-low">Price: High to Low</option>
+                        <option value="discount">Discount: High to Low</option>
+                        <option value="name">Name: A to Z</option>
+                    </select>
+                </div>
+                <div class="view-options">
+                    <button class="view-btn active" onclick="setGridView()"><i class="fa-solid fa-grid-2"></i></button>
+                    <button class="view-btn" onclick="setListView()"><i class="fa-solid fa-list"></i></button>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid" id="products-grid">
+                <!-- Products will be rendered by JavaScript -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="page-btn" disabled><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>SPICE BAZAAR's Staples</h4>
+                <p>Premium quality grains, pulses, and spices for your everyday cooking needs.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
+                <a href="#">FAQs</a>
+                <a href="#">Terms & Conditions</a>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p><i class="fa-solid fa-phone"></i> 1800-123-4567</p>
+                <p><i class="fa-solid fa-envelope"></i> support@spicebazaar.in</p>
+            </div>
+            <p class="copyright">&copy; 2026 SPICE BAZAAR Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="staples.js"></script>
+</body>
+</html>
